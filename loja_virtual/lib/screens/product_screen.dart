@@ -138,6 +138,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         } : null,
                     child: Text(UserModel.of(context).isLoggedIn() ? "Adicionar ao carrinho" : "Entre para comprar",
                       style: TextStyle(fontSize: 18.0)),
+                    shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
                     color: primaryColor,
                     textColor: Colors.white,
                   ),
