@@ -7,16 +7,17 @@ import 'package:scoped_model/scoped_model.dart';
 class CartModel extends Model{
 
   UserModel user;
-
   List<CartProduct> products = [];
-
   bool isLoading = false;
-  static CartModel of(BuildContext context) => ScopedModel.of<CartModel>(context);
+  String couponCode;
+  int discountPercentage = 0;
 
   CartModel(this.user){
     if(user.isLoggedIn())
       _loadItens();
   }
+
+  static CartModel of(BuildContext context) => ScopedModel.of<CartModel>(context);
 
   void addCartItem(CartProduct cartProduct){
     products.add(cartProduct);
@@ -59,6 +60,11 @@ class CartModel extends Model{
         .document(cartProduct.cartId).updateData(cartProduct.toMap());
 
     notifyListeners();
+  }
+
+  void setDiscount(String couponCode, int discountPercentage){
+    this.couponCode = couponCode;
+    this.discountPercentage = discountPercentage;
   }
 
   void _loadItens() async{
