@@ -27,7 +27,7 @@ class CartProduct extends Model{
       "productId": productId,
       "quantity": quantity,
       "size": size,
-      //"product": productData.toResumedMap()
+      "product": productData.toResumedMap()
     };
   }
 }
